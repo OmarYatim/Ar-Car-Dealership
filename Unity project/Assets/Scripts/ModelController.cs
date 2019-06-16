@@ -27,13 +27,13 @@ public class ModelController : DefaultTrackableEventHandler
     {
         if(Input.touchCount > 0 && Playable)
         {
-            if(ModelAnimation["Dissociation"].normalizedTime <= 0)
+            if(ModelAnimation["Dissociation"].normalizedTime <= 0) //dissocier la voiture
             {
                 ModelAnimation["Dissociation"].normalizedTime = 0.0f;
                 ModelAnimation["Dissociation"].speed = 1;
                 ModelAnimation.Play("Dissociation");
             }
-            else if(ModelAnimation["Dissociation"].normalizedTime >= 1)
+            else if(ModelAnimation["Dissociation"].normalizedTime >= 1) //Reassembler la voiture
             {
                 ModelAnimation["Dissociation"].normalizedTime = 1.0f;
                 ModelAnimation["Dissociation"].speed = -1;
@@ -44,7 +44,7 @@ public class ModelController : DefaultTrackableEventHandler
     #endregion
 
     #region TrackingMethods
-    protected override void OnTrackingFound()
+    protected override void OnTrackingFound()  //lors de la détection Une animation sera joué
     {
         base.OnTrackingFound();
         ModelAnimation.Play("Apparaitre");
